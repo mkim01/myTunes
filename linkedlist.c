@@ -1,46 +1,50 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "header.h"
+#include <string.h>
+#include "linkedlist.h"
 
-void print_list(struct node *mynode){
-  printf("[");
-  while (mynode != NULL){
-    printf("%d ", mynode->i);
-    mynode = mynode -> next;
+void print_list(struct song_node *songlist){
+  while(songlist != NULL){
+    printf(" %s: %s |", songlist->artist , songlist->name);
+    songlist = songlist->next;
   }
-  printf("]");
 }
 
-struct node * insert_front(struct node *mynode, int value){
-  struct node *newnode = (struct node *) malloc(sizeof(struct node));
-  newnode->i = value;
-  newnode->next = mynode;
-  return newnode;
+struct song_node *makeNode(char *name, char *artist){
+  struct song_node *newsong = (struct song_node*) malloc(sizeof(struct song_node));
+  strcpy(newsong->name, name);
+  strcpy(newsong->artist, artist);
+  return newsong;
 }
 
-struct node * free_list(struct node *mynode){
-  while(mynode != NULL){
-    struct node* holder = mynode;
-    free(holder);
-    holder = NULL;
-    mynode = mynode->next;
-  }
-  return mynode;
+struct song_node * insert_front(struct song_node *songlist, struct song_node *newsong){
+  newsong->next = songlist;
+  return newsong;
 }
 
-struct node * remove_node(struct node *front, int data){
-    struct node *curr = front;
-    struct node *prev = NULL;
-    while (curr != NULL) {
-      if(curr->i == data){
-        struct node * holder = curr;
-        if (prev == NULL) front = front->next;
-        else prev->next = holder->next;
-        free(holder);
-        holder = NULL;
-      }
-      prev = curr;
-      curr = curr->next;
-    }
-    return front;
-}
+// struct song_node * free_list(struct song_node *mynode){
+//   while(mynode != NULL){
+//     struct song_node* holder = mynode;
+//     free(holder);
+//     holder = NULL;
+//     mynode = mynode->next;
+//   }
+//   return mynode;
+// }
+
+// struct song_node * remove_node(struct song_node *front, int data){
+//     struct song_node *curr = front;
+//     struct song_node *prev = NULL;
+//     while (curr != NULL) {
+//       if(curr->i == data){
+//         struct song_node * holder = curr;
+//         if (prev == NULL) front = front->next;
+//         else prev->next = holder->next;
+//         free(holder);
+//         holder = NULL;
+//       }
+//       prev = curr;
+//       curr = curr->next;
+//     }
+//     return front;
+// }
