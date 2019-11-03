@@ -1,9 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "header.h"
+#include "linkedlist.h"
 
 void print_list(struct song_node *songlist){
+  if (songlist == NULL){
+    printf("%s" , "EMPTY LIST");
+  }
   while(songlist != NULL){
     printf(" %s: %s | ", songlist->artist , songlist->name);
     songlist = songlist->next;
@@ -72,31 +75,56 @@ struct song_node * remove_node(struct song_node *front,char * name,char * artist
     return front;
 }
 
+int songcmp(struct song_node *one, struct song_node *two){
+  if (strcmp(one -> artist,two -> artist) > 0){
+    return 1;
+  }
+  if (strcmp(one -> artist,two -> artist) < 0){
+    return -1;
+  }
+  else{
+    if  (strcmp(one -> name,two -> name) > 0){
+      return 1;
+    }
+    if  (strcmp(one -> name,two -> name) < 0){
+      return -1;
+    }
+  }
+  return 0;
+}
 
-// struct song_node * order(struct song_node *songlist,char * name,char * artist){
-//   struct song_node * newnode = makeNode(name, artist);
-//   struct song_node * curr = songlist;
-//   struct song_node * prev = NULL;
-//   while (curr != NULL){
-//     if (strcmp(curr -> name, name)
-//   }
-// }
-// //
-// struct song_node * getfirst(struct song_node * songlist, char * artist){
-//   struct song_node * current = songlist;
-//   while (current != NULL){
-//     if (strcmp(songlist -> artist, artist ) == 0){
-//       return current;
-//     }
-//     current = current -> next;
-//   }
-//
-//   return current;
-// }
+
+struct song_node * orderInsert(struct song_node *songlist,char * name,char * artist){
+  struct song_node * newnode = makeNode(name, artist);
+  struct song_node * curr = songlist;
+  struct song_node * prev = NULL;
+  while(curr != NULL){
+  if (songcmp(newnode,curr) < 0 || songcmp(newnode,curr) == 0 ){
+      if (prev == NULL){
+        newnode -> next = songlist;
+        return newnode;
+      }
+      prev -> next = newnode;
+      newnode -> next = curr;
+      return songlist;
+  }
+  prev = curr;
+  curr = curr -> next;
+}
+
+if (prev == NULL){
+return newnode;
+}
+prev -> next = newnode;
+return songlist;
+}
+
+
+
 struct song_node * free_list(struct song_node *mynode){
   while(mynode != NULL){
     struct song_node* holder = mynode;
-    printf("Freeing node: %s %s\n", holder->artist, holder-> name);
+    printf("Freeing node: [%s : %s]\n", holder->artist, holder-> name);
     free(holder);
     holder = NULL;
     mynode = mynode->next;

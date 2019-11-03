@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
-#include "header.h"
+#include "linkedlist.h"
 
 int main(){
   srand(time(NULL));
@@ -10,19 +10,44 @@ int main(){
   printf("------------------------- \n\n");
 
   struct song_node *  end = NULL;
-  end = insert_front(end, "thunderstruck", "ac/dc");
-  end = insert_front(end, "alive", "pearl jam");
-  end = insert_front(end, "even flow", "pearl jam");
-  end = insert_front(end, "yellow ledbetter", "pearl jam");
-  end = insert_front(end, "time", "pink floyd");
   end = insert_front(end, "paranoid android", "radiohead");
-  end = insert_front(end, "street spirit (fade out)", "radiohead");
+  printf("Testing insert_front: [radiohead: paranoid android] \n");
+  print_list(end);
+  printf("Testing insert_front: [pearl jam: even flow] \n");
+  end = insert_front(end, "alive", "pearl jam");
+  print_list(end);
+  printf("Testing insert_front: [ac/dc: thunderstruck] \n");
+  end = insert_front(end, "thunderstruck", "ac/dc");
+  print_list(end);
+
+  printf("------------------------- \n\n");
   printf("Testing print_list: \n");
   print_list(end);
+
+
+  printf("------------------------- \n\n");
+  end = orderInsert(end, "yellow ledbetter", "pearl jam");
+  printf("Testing orderInsert: [pearl jam: yellow ledbetter] \n");
+  print_list(end);
+  end = orderInsert(end, "street spirit (fade out)", "radiohead");
+  printf("Testing orderInsert: [radio head: street spirit (fade out)] \n");
+  print_list(end);
+  end = orderInsert(end, "time", "pink floyd");
+  printf("Testing orderInsert: [pink floyd: time] \n");
+  print_list(end);
+  end = orderInsert(end, "even flow", "pearl jam");
+  printf("Testing orderInsert: [pearl jam: even flow] \n");
+  print_list(end);
+
+  end = insert_front(end, "yellow ledbetter", "pearl jam");
+  end = insert_front(end, "time", "pink floyd");
+  end = insert_front(end, "alive", "pearl jam");
+  end = insert_front(end, "street spirit (fade out)", "radiohead");
 
   printf("------------------------- \n\n");
   printf("Testing print_song: \n");
   print_song(end);
+
 
   printf("------------------------- \n\n");
   printf("Testing find_artist: \n");
@@ -32,6 +57,23 @@ int main(){
   print_list(get(end,"thunderstruck", "ac/dc"));
   printf("Looking for thunder by by Imagine Dragons: \n");
   print_list(get(end,"thunder", "Imagine Dragons"));
+
+
+  printf("------------------------- \n\n");
+  struct song_node * one = makeNode( "even flow", "pearl jam");
+  struct song_node * two = makeNode( "even flow", "pearl jam");
+  struct song_node * three = makeNode( "alive", "pearl jam");
+  struct song_node * four = makeNode("time", "pink floyd");
+  printf("Testing songcmp: \n");
+  printf("Comparing [pearl jam: even flow] to [pearl jam: even flow] \n");
+  printf("%d\n", songcmp(one,two));
+  printf("Comparing [pearl jam: even flow] to [pearl jam: alive] \n");
+  printf("%d\n", songcmp(one, three));
+  printf("Comparing Comparing [pearl jam: alive] to [pearl jam: even flow] \n");
+  printf("%d\n", songcmp(three, one));
+  printf("Comparing [pearl jam: even flow] to [pink floyd: time] \n");
+  printf("%d\n", songcmp(one, four));
+
 
   printf("------------------------- \n\n");
   printf("Testing getFirst: \n");
