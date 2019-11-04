@@ -57,10 +57,8 @@ struct song_node * getFirst(struct song_node * songlist,char * artist){
 
 
 struct song_node * remove_node(struct song_node *front, char * name, char * artist) {
-
     struct song_node * prev = NULL;
     struct song_node * current = front;
-
     while (current != NULL) {
         if (strcmp(current->name, name) == 0 && strcmp(current->artist, artist) == 0) {
             if (prev == NULL) {
@@ -134,7 +132,6 @@ struct song_node * free_list(struct song_node * list) {
         next = current->next;
         printf("Freeing node: ");
         print_song(current);
-        printf("\n");
         free(current);
         current = next;
     }
