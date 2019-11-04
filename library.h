@@ -1,6 +1,6 @@
 #ifndef MUSIC
 #define MUSIC
-#include "linkedList.h"
+#include "linkedlist.h"
 struct song_node * table[27];
 void setTable();
 void add_song( char * name, char * artist) ;
