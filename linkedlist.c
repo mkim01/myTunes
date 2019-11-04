@@ -15,10 +15,11 @@ void print_list(struct song_node *songlist){
 }
 
 struct song_node * makeNode( char *name, char *artist){
-  struct song_node *newsong = (struct song_node*) malloc(sizeof(struct song_node));
-  strcpy(newsong->name, name);
-  strcpy(newsong->artist, artist);
-  return newsong;
+  struct song_node * new_node = malloc(sizeof(struct song_node));
+  strncpy(new_node->name, name, sizeof(new_node->name));
+  strncpy(new_node->artist, artist, sizeof(new_node->artist));
+  new_node -> next = NULL;
+  return new_node;
 }
 
 struct song_node * insert_front(struct song_node *songlist, char *name, char *artist){

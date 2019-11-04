@@ -83,13 +83,14 @@ int main(){
   printf("Removing: street spirit (fade out) by radiohead\n");
   end = remove_node(end,"street spirit (fade out)", "radiohead" );
   print_list(end);
-  // printf("Removing: alive by pearl jam\n");
-  // end = remove_node(end, "alive", "pearl jam");
-  // print_list(end);
-  // printf("Removing: thunderstruck by ac/dc\n");
-  // end = remove_node(end,"thunderstruck", "ac/dc" );
-  // print_list(end);
-  // printf("\n");
+  printf("Removing: alive by pearl jam\n");
+  end = remove_node(end, "alive", "pearl jam");
+  end = remove_node(end, "alive", "pearl jam");
+  print_list(end);
+  printf("Removing: thunderstruck by ac/dc\n");
+  end = remove_node(end,"thunderstruck", "ac/dc" );
+  print_list(end);
+  printf("\n");
 
 
   printf("------------------------- \n\n");
@@ -102,10 +103,10 @@ int main(){
   random = findRandom(end);
   print_song(random);
 
-  // printf("------------------------- \n\n");
-  // printf("Testing free_List \n");
-  // end = free_list(end);
-  // print_list(end);
+  printf("------------------------- \n\n");
+  printf("Testing free_List \n");
+  end = free_list(end);
+  print_list(end);
 
   printf("\nMusic Library Tests\n");
   printf("------------------------- \n\n");
@@ -188,10 +189,10 @@ int main(){
   printf("%s\n", "shuffle" );
   print_shuffle();
   printf("------------------------- \n\n");
-  //
-  // printf("Testing free_lib\n");
-  // free_lib();
-  // printf("------------------------- \n\n");
+  
+  printf("Testing free_lib\n");
+  free_lib();
+  printf("------------------------- \n\n");
 
   printf("%s\n", "Current Library:" );
   print_songlib();
