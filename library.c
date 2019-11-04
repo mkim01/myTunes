@@ -19,10 +19,12 @@ void add_song( char * name, char * artist) {
       letter = 26;
     }
     table[letter] = orderInsert(table[letter], name, artist);
+    // print_list(table[letter]);
   }
   else{
     letter = 26;
     table[letter] = orderInsert(table[letter], name, artist);
+    // print_list(table[letter]);
   }
 }
 
@@ -38,6 +40,7 @@ void print_songlib(){
    }
    else{
      if (table[letter] != NULL){
+       // printf("%s\n", "here" );
        printf("%c: ", letter+'a');
        print_list(table[letter]);
 }
