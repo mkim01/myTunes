@@ -87,6 +87,7 @@ int main(){
   print_song(random);
 
   printf("------------------------- \n\n");
+  printf("Testing remove:\n");
   printf("Current list:\n");
   print_list(end);
   printf("Removing: street spirit (fade out) by radiohead\n");
@@ -160,8 +161,8 @@ int main(){
   print_list(artist);
   printf("------------------------- \n\n");
 
-
-  printf("%s\n", "Current Library:" );
+  printf("Testing Remove song: \n" );
+  printf( "Current Library: \n" );
   print_songlib();
   printf("\n" );
   printf("%s\n", "removing: [pearl jam: alive]" );
