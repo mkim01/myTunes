@@ -3,7 +3,7 @@
 #include <string.h>
 #include <time.h>
 #include "linkedlist.h"
-
+#include "library.h"
 int main(){
   srand(time(NULL));
   printf("LINKED LIST TEST\n");
@@ -112,5 +112,90 @@ int main(){
   end = free_list(end);
   print_list(end);
 
+  printf("\nMusic Library Tests\n");
+  printf("------------------------- \n\n");
+  setTable();
+  printf("Testing print_library\n");
 
+  add_song("thunderstruck", "ac/dc");
+  add_song("alive","pearl jam");
+  add_song("yellow ledbetter", "pearl jam" );
+  add_song("time", "pink floyd");
+  add_song("even flow", "pearl jam" );
+  add_song("peaches", "presidents of the united states of america");
+  add_song("paranoid android", "radiohead" );
+  add_song("street spirit (fade out)", "radiohead" );
+  add_song("hello", "$324" );
+  add_song("bye", "344" );
+  print_songlib();
+  // printf("------------------------- \n\n");
+  //
+  //
+  // printf("Testing search_songlib\n");
+  // printf("%s\n", "Looking for [radiohead:street spirit (fade out)]" );
+  // struct song_node * found = search_song("street spirit (fade out)", "radiohead");
+  // print_list(found);
+  // printf("\n" );
+  // printf("%s\n", "Looking for [$324:hello)]" );
+  // found = search_song("hello", "$324");
+  // print_list(found);
+  // printf("\n" );
+  // printf("------------------------- \n\n");
+  //
+  // printf("Testing print_letter\n");
+  // printf("%s\n", "z list" );
+  // print_letter('z');
+  // printf("\n" );
+  // printf("%s\n", "p list" );
+  // print_letter('p');
+  // printf("\n" );
+  // printf("%s\n", "misc list" );
+  // print_letter('3');
+  // printf("------------------------- \n\n");
+  //
+  // printf("Testing search_artist\n");
+  // printf("%s\n", "Looking for songs by [pearl jam]" );
+  // struct song_node * artist = search_artist("pearl jam");
+  // print_list(artist);
+  // printf("\n" );
+  // printf("%s\n", "Looking for songs by [pink floyd]" );
+  // artist = search_artist("pink floyd");
+  // print_list(artist);
+  // printf("\n" );
+  // printf("%s\n", "Looking for songs by [pink floyd]" );
+  // artist = search_artist("bob dylan");
+  // print_list(artist);
+  // printf("------------------------- \n\n");
+  //
+  // printf("Testing print_artist\n");
+  // printf("%s\n", "Printing [pearl jam]:" );
+  // print_artist("pearl jam");
+  // printf("%s\n", "Printing [ac/dc]:" );
+  // printf("\n");
+  // print_artist("ac/dc");
+  // printf("------------------------- \n\n");
+  //
+  // printf("%s\n", "Current Library:" );
+  // print_songlib();
+  // printf("\n" );
+  // printf("%s\n", "removing: [pearl jam: alive]" );
+  // remove_song("alive","pearl jam");
+  // print_songlib();
+  // printf("\n" );
+  // printf("%s\n", "removing: [radiohead: street spirit (fade out)]" );
+  // remove_song("street spirit (fade out)","radiohead");
+  // print_songlib();
+  // printf("------------------------- \n\n");
+  //
+  // printf("%s\n", "shuffle" );
+  // print_shuffle();
+  // printf("------------------------- \n\n");
+  //
+  // printf("Testing free_lib\n");
+  // free_lib();
+  // printf("------------------------- \n\n");
+  //
+  // printf("%s\n", "Current Library:" );
+  // print_songlib();
+  // printf("------------------------- \n\n");
 }

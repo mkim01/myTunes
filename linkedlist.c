@@ -8,7 +8,7 @@ void print_list(struct song_node *songlist){
     printf("%s" , "EMPTY LIST");
   }
   while(songlist != NULL){
-    printf(" %s: %s | ", songlist->artist , songlist->name);
+    printf("%s: %s | ", songlist->artist , songlist->name);
     songlist = songlist->next;
     }
       printf("\n" );
@@ -32,7 +32,7 @@ struct song_node * get(struct song_node * songlist, char * name, char * artist){
   while (current != NULL){
     if (strcmp(current -> artist, artist ) == 0){
       if (strcmp(current -> name, name ) ==0){
-        printf("Arist found!\n");
+        printf("Song found!\n");
         return current;
       }
     }
@@ -121,15 +121,17 @@ return songlist;
 
 
 
-struct song_node * free_list(struct song_node *mynode){
-  while(mynode != NULL){
-    struct song_node* holder = mynode;
-    printf("Freeing node: [%s : %s]\n", holder->artist, holder-> name);
-    free(holder);
-    holder = NULL;
-    mynode = mynode->next;
-  }
-  return mynode;
+struct song_node * free_list(struct song_node * list) {
+    struct song_node * current = list;
+    struct song_node * next = current;
+    while (current != NULL) {
+        next = current->next;
+        printf("Freeing node: ");
+        print_song(current);
+        free(current);
+        current = next;
+    }
+    return NULL;
 }
 
 int length(struct song_node *mynode ){

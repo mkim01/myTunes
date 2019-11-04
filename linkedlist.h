@@ -1,3 +1,5 @@
+#ifndef LINKEDLIST
+#define LINKEDLIST
 struct song_node{
   char artist[100];
   char name[100];
@@ -16,3 +18,4 @@ int length(struct song_node *mynode );
 struct song_node * findRandom(struct song_node * mynode);
 void print_song(struct song_node * song);
 int songcmp(struct song_node *one, struct song_node *two);
+#endif
